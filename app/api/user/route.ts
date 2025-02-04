@@ -48,6 +48,7 @@ export async function POST(request: NextRequest) {
       },
       listener: {
         isReady: false,
+        isListening: false,
         model: {
           gptPath: "",
           sovitsPath: "",

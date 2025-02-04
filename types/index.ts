@@ -15,6 +15,7 @@ export interface Trainer {
 
 export interface Listener {
   isReady: boolean;
+  isListening: boolean;
   model: Model;
 }
 
