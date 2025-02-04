@@ -34,9 +34,28 @@ export async function POST(request: NextRequest) {
       id: "",
       username: "",
       recordings: {},
-      useCustom: false,
-      customPromptId: "-1",
-      submittedForTraining: false,
+      useVoice: 1,
+      trainer: {
+        isReady: false,
+        submittedForTraining: false,
+        model: {
+          gptPath: "",
+          sovitsPath: "",
+          promptPath: "",
+          promptText: "",
+          promptLanguage: "",
+        },
+      },
+      listener: {
+        isReady: false,
+        model: {
+          gptPath: "",
+          sovitsPath: "",
+          promptPath: "",
+          promptText: "",
+          promptLanguage: "",
+        },
+      },
     };
 
     const username = formData.get("username") as string;

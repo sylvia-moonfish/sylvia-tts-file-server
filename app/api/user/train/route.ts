@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     if (!dbUser)
       return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
 
-    dbUser.submittedForTraining = true;
+    dbUser.trainer.submittedForTraining = true;
     await saveUser(dbUser);
 
     return NextResponse.json(dbUser);
