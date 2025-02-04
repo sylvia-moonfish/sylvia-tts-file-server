@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 
     fs.writeFileSync(filePath, uint8Array);
 
-    dbUser.recordings[promptId] = filePath;
+    dbUser.recordings[promptId] = `${dbUser.username}/${promptId}.wav`;
     saveUser(dbUser);
 
     return NextResponse.json(dbUser);

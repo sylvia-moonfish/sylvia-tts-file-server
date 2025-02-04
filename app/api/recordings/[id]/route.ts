@@ -1,4 +1,5 @@
 import { unlink } from "fs/promises";
+import { join } from "path";
 
 import { NextRequest, NextResponse } from "next/server";
 
@@ -21,7 +22,13 @@ export async function DELETE(
       return NextResponse.json({ error: "Unauthorized." }, { status: 401 });
 
     if (dbUser.recordings[promptId]) {
-      await unlink(dbUser.recordings[promptId]);
+      const filePath = join(
+        process.cwd(),
+        "recordings",
+        dbUser.recordings[promptId]
+      );
+
+      await unlink(filePath);
       delete dbUser.recordings[promptId];
       await saveUser(dbUser);
     }
