@@ -27,12 +27,7 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
 
-    const fileDir = join(
-      process.cwd(),
-      "public",
-      "recordings",
-      dbUser.username
-    );
+    const fileDir = join(process.cwd(), "recordings", dbUser.username);
     const filePath = join(fileDir, `${promptId}.wav`);
 
     if (!fs.existsSync(fileDir)) fs.mkdirSync(fileDir, { recursive: true });
